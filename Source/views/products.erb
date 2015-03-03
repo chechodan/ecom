@@ -1,0 +1,29 @@
+<h2>Products</h2>
+<table border="1">
+  <tr>
+    <td>Product</td>
+    <td>Price</td>
+    <td>Description</td>
+    <% if session[:current_customer] %>
+    <td>Shopping Cart</td>
+    <td>Edit Product</td>
+    <% end %>
+  </tr>
+<% @products.each do |product| %>
+  <tr>  
+    <td><%= product.name %></td>
+    <td>$ <%= product.price %></td>
+    <td><%= product.description[0..100] %></td>
+    <% if session[:current_customer] %>
+      <td align="center">
+      <% if product.status %>
+        <a href="/add_product_to_cart/<%=product.id%>">Add</a>
+      <% else %>
+          Disabled
+      <% end %>
+      </td>
+    <td align="center"><a href="/product/<%=product.id%>/edit">Edit</a></td>
+    <% end %>
+  <tr>
+  <% end %>
+</table>

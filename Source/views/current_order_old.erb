@@ -1,0 +1,20 @@
+<% if @current_order %>
+<table>
+  <tr>
+    <td>
+      <p>Order # <%= @current_order.order_no %> created at <%= @current_order.date %> - Total = <strong>$ <%= @current_order.total %></strong></p>
+      <% if @current_order.shopping_cart and @current_order.shopping_cart.length > 0 %>
+      <ul>
+        <% @current_order.shopping_cart.each do |item| %>
+        <li><%= item.product.name %> (qty: <%= item.qty %>) x $ <%= item.unit_price %> = $ <%= item.total_price %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>No products found.</p>  
+      <% end %>
+    </td>
+  </tr>
+</table>
+<% else %>
+  <p>No orders were found.</p>
+<% end %>

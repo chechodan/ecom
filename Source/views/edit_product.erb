@@ -1,0 +1,24 @@
+<h2>Edit Product</h2>
+<% if @errors %>
+  <% @errors.each do |error|  %>
+    <% error.each do |e|  %>
+    <p><%= e %> </p>
+    <% end %>
+  <% end %>
+<% end %>
+<form action="/product/<%= @product.id %>/edit" method="POST">
+  <input type="hidden" name="_method" value="PUT"/>
+  <label for="name">Name</label>
+  <input type="text" id="name" name="product[name]" value="<%= @product.name %>" />
+  <label for="price">Price</label> 
+  <input type="text" id="price" name="product[price]" value="<%= @product.price %>" />
+  <label for="status">Status</label>
+  <select id="status" name="product[status]">
+    <option value="0" <%= 'selected' unless @product.status %>>Disabled</option>
+    <option value="1" <%= 'selected' if @product.status %>>Enabled</option>
+  </select>
+  <label for="description">Description</label>
+  <textarea id="description" name="product[description]"><%= @product.description %></textarea>
+  <input type="submit" value="Edit Product" />
+</form>
+

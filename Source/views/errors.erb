@@ -1,0 +1,7 @@
+<% if @errors %>
+  <% @errors.each do |error|  %>
+    <% error.each do |e|  %>
+    <p><%= e %> </p>
+    <% end %>
+  <% end %>
+<% end %>

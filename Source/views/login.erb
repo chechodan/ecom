@@ -1,0 +1,11 @@
+<h2>Login</h2>
+<% if @error %>
+  <p>Access denied</p>
+<% end %>
+<form action="/login" method="POST">
+  <label for="email">Email</label>
+  <input type="text" id="email" name="email" value="<%= params[:email] %>" />
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" />
+  <input type="submit" value="Log in" />
+</form>

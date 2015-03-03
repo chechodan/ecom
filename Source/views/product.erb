@@ -1,0 +1,22 @@
+<h2>Add Product</h2>
+<% if @errors %>
+  <% @errors.each do |error|  %>
+    <% error.each do |e|  %>
+    <p><%= e %> </p>
+    <% end %>
+  <% end %>
+<% end %>
+<form action="/product" method="POST">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" value="<%= params[:name] %>" />
+  <label for="price">Price</label> 
+  <input type="text" id="price" name="price" value="<%= params[:price] %>" />
+  <label for="status">Status</label>
+  <select id="status" name="status">
+    <option value="0" <%= 'selected' unless params[:status] %>>Disabled</option>
+    <option value="1" <%= 'selected' if params[:status] %>>Enabled</option>
+  </select>
+  <label for="description">Description</label>
+  <textarea id="description" name="description"><%= params[:description] %></textarea>
+  <input type="submit" value="Add Product" />
+</form>

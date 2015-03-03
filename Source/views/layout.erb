@@ -1,0 +1,31 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <title>ECOM</title>
+  </head>
+  <body>
+    <header>
+      <h1>ECOM</h1>
+    </header>
+    <aside>
+      <ul>
+          <li><a href="/products">Products</a></li>
+          <li><a href="/sigin">Sigin</a></li>
+          <% unless session[:current_customer] %>
+            <li><a href="/login">Login</a></li>
+          <% else %>
+            <li><a href="/my_orders">My Orders</a></li>
+            <li><a href="/current_order">Current Order</a></li>              
+            <li><a href="/product/add">Add Product</a></li>              
+            <li><a href="/logout">Logout</a></li>
+          <% end %>
+      </ul>
+    </aside>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p>Daniel Liendo</p>
+    </footer>
+  </body>
+</html>

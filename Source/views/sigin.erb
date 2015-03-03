@@ -1,0 +1,23 @@
+<h2>Sigin</h2>
+<% if @errors %>
+  <% @errors.each do |error|  %>
+    <% error.each do |e|  %>
+    <p><%= e %> </p>
+    <% end %>
+  <% end %>
+<% end %>
+<form action="/sigin" method="POST">
+  <label for="firstname">Firstname</label>
+  <input type="text" id="firstname" name="firstname" value="<%=params[:firstname]%>" />
+  <label for="lastname">Lastname</label> 
+  <input type="text" id="lastname" name="lastname" value="<%=params[:lastname]%>" />
+  <label for="email">Email</label>
+  <input type="text" id="email" name="email" value="<%=params[:email]%>" />
+  <label for="email_confirmation">Email Confirmation</label>
+  <input type="text" id="email_confirmation" name="email_confirmation" value="<%=params[:email_confirmation]%>" /> 
+  <label for="passw">Password</label>
+  <input type="password" id="passw" name="passw" />
+  <label for="passw_confirmation">Password Confirmation</label>
+  <input type="password" id="passw_confirmation" name="passw_confirmation" />
+  <input type="submit" value="Sig in" />
+</form>

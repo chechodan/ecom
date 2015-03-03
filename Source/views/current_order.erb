@@ -1,0 +1,24 @@
+<h2>Current Order</h2>
+<% if @current_order %> 
+<table>
+  <tr>
+    <td>
+      <% if @current_order.length > 0 %>
+      <% total = 0 %>
+      <ul>
+        <% @current_order.each do |item| %>
+        <% total += item[:total_price].to_f %>
+        <li><%= item[:product].name %> (qty: <%= item[:qty] %>) x $ <%= item[:product].price %> = $ <%= item[:total_price] %></li>
+        <% end %>
+      </ul>
+      <% else %>
+        <p>No products found.</p>  
+      <% end %>
+      <p><strong>TOTAL</strong> $ <%= total %></p>  
+    </td>
+  </tr>
+</table>
+<a href="/place_order">Place Order</a>
+<% else %>
+  <p>No orders were found.</p>
+<% end %>

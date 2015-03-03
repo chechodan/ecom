@@ -1,0 +1,9 @@
+<h2>Home</h2>
+<section>
+  <% @products.each do |product| %>
+  <div>  
+    <p><%= product.name %> <%= product.price %></p>
+    <p><%= product.description %></p>
+  <div>
+  <% end %>
+</section> 
